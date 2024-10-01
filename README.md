@@ -1,5 +1,9 @@
 This repo was created and deployed using Replit.
 
+Install al the dependencies if needed
+pip install -r requirements.txt
+
+
 # Python Flask ReplAuth
 
 Using the ReplAuth with Flask is super easy! First we create a new Flask app: 
