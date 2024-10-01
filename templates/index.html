@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Factor Game</title>
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="index-container">
+        <div class="container">
+            <h1>Welcome to the Health Factor Game</h1>
+
+            <form method="POST" action="{{ url_for('start_game') }}">
+                <label for="nickname">Enter your nickname to begin the game:</label><br>
+                <input type="text" name="nickname" id="nickname" placeholder="Your Nickname" required><br><br>
+
+                <h2>Instructions:</h2>
+                <p>
+                    You have been granted 100,000 pesos,<br>
+                    75% in ETH and 25% in XOC (XOC is a Mexican Peso Stable Coin).<br>
+                    You will now learn how to manage your health ratio.<br><br>
+
+                    The health ratio is calculated as:<br>
+                    <strong>Collateral provided / Loan taken</strong><br><br>
+
+                    You will start with 50,000 of ETH as Collateral and 30,000 as a Loan.<br>
+                    So, you still have 25,000 of each currency to survive.<br><br>
+
+                    The XOC Balance (in Wallet) grows 5% each round. You have 10 rounds.<br><br>
+
+                    Get as much XOC as possible to win!
+                </p>
+
+                <button type="submit">Start Game</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

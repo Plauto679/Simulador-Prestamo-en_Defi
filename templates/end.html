@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Over</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Game Over</h1>
+        <p>Congratulations, {{ session['nickname'] }}! Here are your final stats:</p>
+        <p><strong>Final ETH Collateral:</strong> {{ final_eth_collateral }}</p>
+        <p><strong>Final Loan:</strong> {{ final_loan }}</p>
+        <p><strong>Final XOC Balance (in Wallet):</strong> {{ final_balance }}</p>
+        <p><strong>Final ETH Price:</strong> {{ final_eth_price }}</p>
+
+        <h2>Leaderboard</h2>
+        <ul>
+            {% for nickname, balance in leaderboard %}
+            <li>{{ nickname }}: {{ balance }} XOC</li>
+            {% endfor %}
+        </ul>
+
+        <a href="{{ url_for('restart_game') }}" class="btn-restart">Restart Game</a>
+    </div>
+</body>
+</html>

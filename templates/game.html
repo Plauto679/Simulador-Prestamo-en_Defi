@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Factor Game - Round {{ round }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Round {{ round }}</h1>
+
+        <div class="game-state">
+            <h2>Game State</h2>
+            <p><strong>ETH Collateral (in ETH):</strong> {{ eth_collateral }}</p>
+            <p><strong>ETH Collateral (in XOC):</strong> {{ eth_collateral_in_xoc }}</p>
+            <p><strong>Loan (XOC):</strong> {{ loan }}</p>
+            <p><strong>XOC Balance (in Wallet):</strong> {{ xoc_balance_in_wallet }}</p>
+            <p><strong>ETH Price:</strong> {{ eth_price }}</p>
+            <p><strong>Health Ratio:</strong> {{ health_ratio }}</p>
+            <p><strong>ETH Balance (in Wallet):</strong> {{ eth_wallet_balance }}</p>
+            <p><strong>ETH Balance Expressed in XOC (in Wallet):</strong> {{ eth_wallet_balance_expressed_as_xoc }}</p>
+        </div>
+
+        <!-- Display Error Message if it exists -->
+        {% if error_message %}
+            <div class="error" style="color: red;">
+                <p>{{ error_message }}</p>
+            </div>
+        {% endif %}
+
+        <div class="actions">
+            <h2>Take Action</h2>
+            <form method="POST">
+                <label for="increase_collateral">Increase Collateral:</label>
+                <input type="number" id="increase_collateral" name="increase_collateral" step="0.01" value="0"><br>
+
+                <label for="decrease_collateral">Decrease Collateral:</label>
+                <input type="number" id="decrease_collateral" name="decrease_collateral" step="0.01" value="0"><br>
+
+                <label for="ask_loan">Ask for more Loan:</label>
+                <input type="number" id="ask_loan" name="ask_loan" step="0.01" value="0"><br>
+
+                <label for="repay_loan">Repay your Loan:</label>
+                <input type="number" id="repay_loan" name="repay_loan" step="0.01" value="0"><br><br>
+
+                <button type="submit">Update amounts and go to the next round</button>
+            </form>
+        </div>
+
+        <div class="graph">
+            <h2>Health Factor History</h2>
+            <img src="{{ url_for('health_chart') }}" alt="Health Factor Over Time">
+        </div>
+
+        <div class="restart">
+            <a href="{{ url_for('restart_game') }}" class="restart-button">Restart Game</a>
+        </div>
+    </div>
+</body>
+</html>

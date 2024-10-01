@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Over</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Game Over</h1>
+        <p>Your health ratio dropped below 0.99, and you have been liquidated.</p>
+        <p><strong>Final Health Ratio:</strong> {{ final_health_ratio }}</p>
+        <p>Thanks for playing!</p>
+
+        <!-- Display the Health Factor Graph -->
+        <div class="graph">
+            <h2>Health Factor History</h2>
+            <img src="{{ url_for('health_chart') }}" alt="Health Factor Over Time">
+        </div>
+
+        <!-- Restart Game Button -->
+        <div class="restart">
+            <a href="{{ url_for('restart_game') }}" class="restart-button">Restart Game</a>
+        </div>
+    </div>
+</body>
+</html>
